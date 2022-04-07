@@ -1,4 +1,4 @@
-import { Button, HStack, Input, Text, useNumberInput, VStack } from "@chakra-ui/react";
+import { Button, HStack, Input, useNumberInput } from "@chakra-ui/react";
 import { useAmount, useSetConfig } from "../../controllers";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
@@ -17,19 +17,14 @@ export const QuestionAmountInput = () => {
   const decrement = getDecrementButtonProps();
   const input = getInputProps();
   return (
-    <VStack w="100%" spacing={4}>
-      <Text as="h3" fontSize="lg">
-        Number of questions:
-      </Text>
-      <HStack w="100%">
-        <Button {...decrement}>
-          <MinusIcon />
-        </Button>
-        <Input {...input} textAlign="center" />
-        <Button {...increment}>
-          <AddIcon />
-        </Button>
-      </HStack>
-    </VStack>
+    <HStack w="100%">
+      <Button {...decrement}>
+        <MinusIcon />
+      </Button>
+      <Input {...input} textAlign="center" />
+      <Button {...increment}>
+        <AddIcon />
+      </Button>
+    </HStack>
   );
 };

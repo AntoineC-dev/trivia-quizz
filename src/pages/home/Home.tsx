@@ -5,6 +5,7 @@ import {
   QuestionAmountInput,
   QuestionCategorySelect,
   QuestionDifficultyRadio,
+  QuestionInputGroup,
 } from "../../components";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
@@ -21,9 +22,15 @@ export const Home = () => {
             The Open Trivia Database provides a completely free JSON API for use in programming projects.
           </Heading>
         </VStack>
-        <QuestionAmountInput />
-        <QuestionCategorySelect />
-        <QuestionDifficultyRadio />
+        <QuestionInputGroup title="Number of question(s):">
+          <QuestionAmountInput />
+        </QuestionInputGroup>
+        <QuestionInputGroup title="Category:">
+          <QuestionCategorySelect />
+        </QuestionInputGroup>
+        <QuestionInputGroup title="Difficulty:">
+          <QuestionDifficultyRadio />
+        </QuestionInputGroup>
         <Button size="lg" rightIcon={<ArrowForwardIcon />}>
           Start the quizz
         </Button>
