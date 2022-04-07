@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Button, Heading, VStack } from "@chakra-ui/react";
+import { Heading, VStack } from "@chakra-ui/react";
 import {
   QuestionAmountInput,
   QuestionCategorySelect,
   QuestionDifficultyRadio,
   QuestionInputGroup,
+  RouterButton,
 } from "../../components";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { ROUTES } from "../../navigation";
 
 export const Home = () => {
   return (
@@ -28,9 +30,9 @@ export const Home = () => {
       <QuestionInputGroup title="Difficulty:">
         <QuestionDifficultyRadio />
       </QuestionInputGroup>
-      <Button size="lg" rightIcon={<ArrowForwardIcon />}>
+      <RouterButton to={ROUTES.quizz} size="lg" rightIcon={<ArrowForwardIcon />}>
         Start the quizz
-      </Button>
+      </RouterButton>
     </VStack>
   );
 };
