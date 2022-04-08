@@ -1,5 +1,5 @@
 import { State } from "zustand";
-import { TriviaCategory, TriviaDifficulty, TriviaQuestion } from "./trivia.types";
+import { TriviaCategory, TriviaDifficulty } from "./trivia.types";
 
 export interface ConfigState {
   amount: number;
@@ -9,10 +9,28 @@ export interface ConfigState {
 
 export type ConfigParams = Partial<ConfigState>;
 
+export interface StoreQuestion {
+  question: string;
+  correct_answer: string;
+  answers?: string[];
+}
+
+export interface StoreAnswer {
+  answer: string;
+  isValid: boolean;
+}
+
 export interface StoreState extends State {
   token: string | null;
   config: ConfigState;
-  questions: TriviaQuestion[];
   setConfig: (params: ConfigParams) => void;
-  getQuestions: () => void;
+  quizz: {
+    questions: StoreQuestion[];
+    results: StoreAnswer[];
+    score: number;
+    questionsCount: number;
+  };
+  initializeQuizz: () => void;
+  resetQuizz: () => void;
+  updateResults: (index: number, answer: string) => void;
 }
