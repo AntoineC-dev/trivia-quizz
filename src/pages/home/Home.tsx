@@ -9,8 +9,14 @@ import {
 } from "../../components";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { ROUTES } from "../../navigation";
+import { useQuestionsCount, useResetQuizz } from "../../controllers";
 
 export const Home = () => {
+  const questionsCount = useQuestionsCount();
+  const resetQuizz = useResetQuizz();
+  React.useEffect(() => {
+    if (questionsCount !== 0) resetQuizz();
+  }, [questionsCount, resetQuizz]);
   return (
     <VStack spacing={8} w="100%" maxW="lg" justifySelf="center">
       <VStack spacing={4}>
