@@ -21,9 +21,27 @@ export const useDifficulty = () => useStore(difficultySelector);
 const setConfigSelector = (state: StoreState) => state.setConfig;
 export const useSetConfig = () => useStore(setConfigSelector);
 
-// Questions
-const questionsSelector = (state: StoreState) => state.questions;
+// Quizz
+const quizzSelector = (state: StoreState) => state.quizz;
+export const useQuizz = () => useStore(quizzSelector);
+
+const questionsSelector = (state: StoreState) => state.quizz.questions;
 export const useQuestions = () => useStore(questionsSelector);
 
-const getQuestionsSelector = (state: StoreState) => state.getQuestions;
-export const useGetQuestions = () => useStore(getQuestionsSelector);
+const questionsCountSelector = (state: StoreState) => state.quizz.questionsCount;
+export const useQuestionsCount = () => useStore(questionsCountSelector);
+
+const resultsSelector = (state: StoreState) => state.quizz.results;
+export const useResults = () => useStore(resultsSelector);
+
+const scoreSelector = (state: StoreState) => state.quizz.score;
+export const useScore = () => useStore(scoreSelector);
+
+const initializeQuizzSelector = (state: StoreState) => state.initializeQuizz;
+export const useInitializeQuizz = () => useStore(initializeQuizzSelector);
+
+const resetQuizzSelector = (state: StoreState) => state.resetQuizz;
+export const useResetQuizz = () => useStore(resetQuizzSelector);
+
+const updateResultsSelector = (state: StoreState) => state.updateResults;
+export const useUpdateResults = () => useStore(updateResultsSelector);
