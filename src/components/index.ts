@@ -3,5 +3,6 @@ export * from "./layout/Layout";
 export * from "./questionAmountInput/QuestionAmountInput";
 export * from "./questionCategorySelect/QuestionCategorySelect";
 export * from "./questionDifficultyRadio/QuestionDifficultyRadio";
+export * from "./questionDisplay/QuestionDisplay";
 export * from "./questionInputGroup/QuestionInputGroup";
 export * from "./router/RouterButton";
