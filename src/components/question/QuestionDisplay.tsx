@@ -14,7 +14,7 @@ export const QuestionDisplay = ({ index }: { index: number }) => {
       </Heading>
       <Text fontSize="xl">{decodeHtml(question)}</Text>
       {quizzStatus === "completed" && (
-        <Code colorScheme="green" fontSize="xl">
+        <Code colorScheme={result.answer === correct_answer ? "green" : "red"} fontSize="xl">
           Correct answer: {decodeHtml(correct_answer)}
         </Code>
       )}

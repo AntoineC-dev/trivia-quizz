@@ -1,4 +1,5 @@
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import { RepeatIcon } from "@chakra-ui/icons";
 import { ButtonGroup } from "@chakra-ui/react";
 import { useQuestionsCount } from "../../controllers";
 import { ROUTES } from "../../navigation";
@@ -17,7 +18,7 @@ export const QuestionActions = ({ index }: { index: number }) => {
         color="current"
         isDisabled={index === 0}
       />
-      <RouterButton variant="ghost" to={ROUTES.home}>
+      <RouterButton variant="ghost" to={ROUTES.home} rightIcon={<RepeatIcon />}>
         Restart
       </RouterButton>
       {index === questionsCount - 1 ? (
