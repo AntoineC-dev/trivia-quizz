@@ -4,7 +4,6 @@ import { ButtonGroup, Code, Heading, VStack } from "@chakra-ui/react";
 import { RouterButton } from "../components";
 import { useQuestionsCount, useScore, useSetQuizzStatus } from "../controllers";
 import { ROUTES } from "../navigation";
-import { To } from "react-router-dom";
 
 export const Results = () => {
   const score = useScore();
@@ -30,7 +29,7 @@ export const Results = () => {
         <RouterButton to={ROUTES.home} rightIcon={<RepeatIcon />} variant="ghost">
           Restart
         </RouterButton>
-        <RouterButton to={-1 as To} rightIcon={<CheckCircleIcon />} colorScheme="green">
+        <RouterButton to={ROUTES.question(0)} rightIcon={<CheckCircleIcon />} colorScheme="green">
           Show correct answers
         </RouterButton>
       </ButtonGroup>
