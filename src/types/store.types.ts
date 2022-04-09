@@ -32,5 +32,5 @@ export interface StoreState extends State {
   };
   initializeQuizz: () => void;
   resetQuizz: () => void;
-  updateResults: (index: number, answer: string) => void;
+  updateResults: (params: { index: number; answer: string }) => void;
 }
