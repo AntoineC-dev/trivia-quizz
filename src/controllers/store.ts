@@ -1,6 +1,6 @@
 import create from "zustand";
 import { DEFAULT_API_CATEGORY, getQuestionsRequest } from "../api";
-import { shuffleArray } from "../helpers";
+import { formatTriviaQuestion } from "../helpers";
 import { ConfigState, QuizzState, StoreAnswer, StoreQuestion, StoreState } from "../types";
 
 const initialConfigState: ConfigState = {
@@ -25,13 +25,7 @@ export const useStore = create<StoreState>((set, get) => ({
   initializeQuizz: async () => {
     const { config, token } = get();
     const response = await getQuestionsRequest({ ...config, token });
-    const questions: StoreQuestion[] = response.questions.map((val) => {
-      if (val.type === "multiple") {
-        const answers = shuffleArray([val.correct_answer, ...val.incorrect_answers]);
-        return { question: val.question, answers, correct_answer: val.correct_answer };
-      }
-      return { question: val.question, correct_answer: val.correct_answer };
-    });
+    const questions: StoreQuestion[] = response.questions.map((val) => formatTriviaQuestion(val));
     const results: StoreAnswer[] = questions.map((_) => ({ answer: "", isValid: false }));
     set((state) => ({
       quizz: { ...state.quizz, questions, questionsCount: questions.length, results, status: "completing" },
