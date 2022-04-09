@@ -1,34 +1,28 @@
 import create from "zustand";
 import { DEFAULT_API_CATEGORY, getQuestionsRequest } from "../api";
 import { shuffleArray } from "../helpers";
-import { ConfigParams, ConfigState, StoreAnswer, StoreQuestion, StoreState } from "../types";
+import { ConfigState, QuizzState, StoreAnswer, StoreQuestion, StoreState } from "../types";
 
-const initialConfigState = {
+const initialConfigState: ConfigState = {
   amount: 10,
   category: DEFAULT_API_CATEGORY.id,
   difficulty: "easy",
-} as ConfigState;
+};
 
-const initialQuizzState = {
+const initialQuizzState: QuizzState = {
   questions: [],
   questionsCount: 0,
   results: [],
   score: 0,
+  status: "initial",
 };
 
 export const useStore = create<StoreState>((set, get) => ({
   token: null,
   config: initialConfigState,
-  setConfig: (params) =>
-    set((state) => ({
-      config: {
-        ...state.config,
-        ...params,
-      },
-    })),
+  setConfig: (params) => set((state) => ({ config: { ...state.config, ...params } })),
   quizz: initialQuizzState,
   initializeQuizz: async () => {
-    console.log("initialize quizz");
     const { config, token } = get();
     const response = await getQuestionsRequest({ ...config, token });
     const questions: StoreQuestion[] = response.questions.map((val) => {
@@ -39,9 +33,12 @@ export const useStore = create<StoreState>((set, get) => ({
       return { question: val.question, correct_answer: val.correct_answer };
     });
     const results: StoreAnswer[] = questions.map((_) => ({ answer: "", isValid: false }));
-    set((state) => ({ quizz: { ...state.quizz, questions, questionsCount: questions.length, results } }));
+    set((state) => ({
+      quizz: { ...state.quizz, questions, questionsCount: questions.length, results, status: "completing" },
+    }));
   },
-  resetQuizz: () => set({ quizz: { questions: [], questionsCount: 0, results: [], score: 0 } }),
+  setQuizzStatus: (status) => set((state) => ({ quizz: { ...state.quizz, status } })),
+  resetQuizz: () => set({ quizz: initialQuizzState }),
   updateResults: ({ index, answer }) => {
     const { quizz } = get();
     const question = quizz.questions[index];

@@ -44,6 +44,9 @@ export const useResultByIndex = (index: number) =>
 const scoreSelector = (state: StoreState) => state.quizz.score;
 export const useScore = () => useStore(scoreSelector);
 
+const setQuizzStatusSelector = (state: StoreState) => state.setQuizzStatus;
+export const useSetQuizzStatus = () => useStore(setQuizzStatusSelector);
+
 const initializeQuizzSelector = (state: StoreState) => state.initializeQuizz;
 export const useInitializeQuizz = () => useStore(initializeQuizzSelector);
 

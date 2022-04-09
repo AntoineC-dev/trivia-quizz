@@ -6,8 +6,16 @@ export interface ConfigState {
   category: TriviaCategory["id"];
   difficulty: TriviaDifficulty;
 }
-
 export type ConfigParams = Partial<ConfigState>;
+
+export type QuizzStatus = "initial" | "completing" | "completed";
+export interface QuizzState {
+  questions: StoreQuestion[];
+  results: StoreAnswer[];
+  score: number;
+  questionsCount: number;
+  status: QuizzStatus;
+}
 
 export interface StoreQuestion {
   question: string;
@@ -24,12 +32,8 @@ export interface StoreState extends State {
   token: string | null;
   config: ConfigState;
   setConfig: (params: ConfigParams) => void;
-  quizz: {
-    questions: StoreQuestion[];
-    results: StoreAnswer[];
-    score: number;
-    questionsCount: number;
-  };
+  quizz: QuizzState;
+  setQuizzStatus: (status: QuizzStatus) => void;
   initializeQuizz: () => void;
   resetQuizz: () => void;
   updateResults: (params: { index: number; answer: string }) => void;
