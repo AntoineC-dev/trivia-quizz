@@ -1,22 +1,23 @@
 import * as React from "react";
-import { Heading, VStack } from "@chakra-ui/react";
-import {
-  ConfigAmountInput,
-  ConfigCategorySelect,
-  ConfigDifficultyRadio,
-  ConfigInputGroup,
-  RouterButton,
-} from "../components";
+import { Button, Heading, VStack } from "@chakra-ui/react";
+import { ConfigAmountInput, ConfigCategorySelect, ConfigDifficultyRadio, ConfigInputGroup } from "../components";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { ROUTES } from "../navigation";
-import { useQuestionsCount, useResetQuizz } from "../controllers";
+import { useInitializeQuizz, useResetQuizz, useStatus } from "../controllers";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  const questionsCount = useQuestionsCount();
+  const quizzStatus = useStatus();
   const resetQuizz = useResetQuizz();
+  const navigate = useNavigate();
+  const initializeQuizz = useInitializeQuizz();
+  const onStartQuizz = () => {
+    initializeQuizz();
+    navigate(ROUTES.question(0));
+  };
   React.useEffect(() => {
-    if (questionsCount !== 0) resetQuizz();
-  }, [questionsCount, resetQuizz]);
+    if (quizzStatus !== "initial") resetQuizz();
+  }, [quizzStatus, resetQuizz]);
   return (
     <VStack spacing={8} w="100%" maxW="lg" justifySelf="center">
       <VStack spacing={4}>
@@ -36,9 +37,9 @@ export const Home = () => {
       <ConfigInputGroup title="Difficulty:">
         <ConfigDifficultyRadio />
       </ConfigInputGroup>
-      <RouterButton to={ROUTES.question(0)} size="lg" rightIcon={<ArrowForwardIcon />}>
+      <Button onClick={onStartQuizz} size="lg" rightIcon={<ArrowForwardIcon />}>
         Start the quizz
-      </RouterButton>
+      </Button>
     </VStack>
   );
 };
