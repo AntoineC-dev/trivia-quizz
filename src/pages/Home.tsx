@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Heading, VStack } from "@chakra-ui/react";
 import {
-  QuestionAmountInput,
-  QuestionCategorySelect,
-  QuestionDifficultyRadio,
-  QuestionInputGroup,
+  ConfigAmountInput,
+  ConfigCategorySelect,
+  ConfigDifficultyRadio,
+  ConfigInputGroup,
   RouterButton,
-} from "../../components";
+} from "../components";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { ROUTES } from "../../navigation";
-import { useQuestionsCount, useResetQuizz } from "../../controllers";
+import { ROUTES } from "../navigation";
+import { useQuestionsCount, useResetQuizz } from "../controllers";
 
 export const Home = () => {
   const questionsCount = useQuestionsCount();
@@ -27,16 +27,16 @@ export const Home = () => {
           The Open Trivia Database provides a completely free JSON API for use in programming projects.
         </Heading>
       </VStack>
-      <QuestionInputGroup title="Number of question(s):">
-        <QuestionAmountInput />
-      </QuestionInputGroup>
-      <QuestionInputGroup title="Category:">
-        <QuestionCategorySelect />
-      </QuestionInputGroup>
-      <QuestionInputGroup title="Difficulty:">
-        <QuestionDifficultyRadio />
-      </QuestionInputGroup>
-      <RouterButton to={ROUTES.quizz} size="lg" rightIcon={<ArrowForwardIcon />}>
+      <ConfigInputGroup title="Number of question(s):">
+        <ConfigAmountInput />
+      </ConfigInputGroup>
+      <ConfigInputGroup title="Category:">
+        <ConfigCategorySelect />
+      </ConfigInputGroup>
+      <ConfigInputGroup title="Difficulty:">
+        <ConfigDifficultyRadio />
+      </ConfigInputGroup>
+      <RouterButton to={ROUTES.question(0)} size="lg" rightIcon={<ArrowForwardIcon />}>
         Start the quizz
       </RouterButton>
     </VStack>

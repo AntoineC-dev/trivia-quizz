@@ -1,2 +1,4 @@
-export * from "./home/Home";
-export * from "./quizz/Quizz";
+export * from "./Home";
+export * from "./Question";
+export * from "./Quizz";
+export * from "./Results";
