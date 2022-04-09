@@ -1,7 +1,7 @@
 import * as React from "react";
 import { VStack } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { QuestionActions, QuestionDisplay } from "../components";
+import { QuestionActions, QuestionDisplay, QuestionNavigation } from "../components";
 
 export const Question = () => {
   const { questionIndex } = useParams();
@@ -10,6 +10,7 @@ export const Question = () => {
     <VStack spacing={8} w="100%">
       <QuestionDisplay index={index} />
       <QuestionActions index={index} />
+      <QuestionNavigation index={index} />
     </VStack>
   );
 };
