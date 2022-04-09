@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Wrap } from "@chakra-ui/react";
 import { useQuestions, useResults, useStatus } from "../../controllers";
 import { ROUTES } from "../../navigation";
@@ -8,7 +7,11 @@ export const QuestionNavigation = ({ index }: { index: number }) => {
   const questions = useQuestions();
   const quizzStatus = useStatus();
   const results = useResults();
-  const colorScheme = (i: number) => (results[i].isValid ? "green" : "red");
+  const buttonColorScheme = (i: number) => {
+    if (quizzStatus !== "completed") return "gray";
+    return results[i].isValid ? "green" : "red";
+  };
+  const buttonVariant = (i: number) => (results[i].answer.length === 0 ? "ghost" : "solid");
 
   return (
     <Wrap justify="center">
@@ -16,7 +19,8 @@ export const QuestionNavigation = ({ index }: { index: number }) => {
         <RouterButton
           to={ROUTES.question(i)}
           isActive={i === index}
-          colorScheme={quizzStatus === "completed" ? colorScheme(i) : "gray"}>
+          variant={buttonVariant(i)}
+          colorScheme={buttonColorScheme(i)}>
           {i + 1}
         </RouterButton>
       ))}
