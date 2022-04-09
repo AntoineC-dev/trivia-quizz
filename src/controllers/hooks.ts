@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { StoreState } from "../types";
 import { useStore } from "./store";
 
@@ -28,11 +29,17 @@ export const useQuizz = () => useStore(quizzSelector);
 const questionsSelector = (state: StoreState) => state.quizz.questions;
 export const useQuestions = () => useStore(questionsSelector);
 
+export const useQuestionByIndex = (index: number) =>
+  useStore(useCallback((state) => state.quizz.questions[index], [index]));
+
 const questionsCountSelector = (state: StoreState) => state.quizz.questionsCount;
 export const useQuestionsCount = () => useStore(questionsCountSelector);
 
 const resultsSelector = (state: StoreState) => state.quizz.results;
 export const useResults = () => useStore(resultsSelector);
+
+export const useResultByIndex = (index: number) =>
+  useStore(useCallback((state) => state.quizz.results[index], [index]));
 
 const scoreSelector = (state: StoreState) => state.quizz.score;
 export const useScore = () => useStore(scoreSelector);

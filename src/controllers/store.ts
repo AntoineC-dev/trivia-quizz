@@ -1,7 +1,7 @@
 import create from "zustand";
 import { DEFAULT_API_CATEGORY, getQuestionsRequest } from "../api";
 import { shuffleArray } from "../helpers";
-import { ConfigParams, ConfigState, StoreQuestion, StoreState } from "../types";
+import { ConfigParams, ConfigState, StoreAnswer, StoreQuestion, StoreState } from "../types";
 
 const initialConfigState = {
   amount: 10,
@@ -19,7 +19,7 @@ const initialQuizzState = {
 export const useStore = create<StoreState>((set, get) => ({
   token: null,
   config: initialConfigState,
-  setConfig: (params: ConfigParams) =>
+  setConfig: (params) =>
     set((state) => ({
       config: {
         ...state.config,
@@ -28,6 +28,7 @@ export const useStore = create<StoreState>((set, get) => ({
     })),
   quizz: initialQuizzState,
   initializeQuizz: async () => {
+    console.log("initialize quizz");
     const { config, token } = get();
     const response = await getQuestionsRequest({ ...config, token });
     const questions: StoreQuestion[] = response.questions.map((val) => {
@@ -37,10 +38,11 @@ export const useStore = create<StoreState>((set, get) => ({
       }
       return { question: val.question, correct_answer: val.correct_answer };
     });
-    set((state) => ({ quizz: { ...state.quizz, questions, questionsCount: questions.length } }));
+    const results: StoreAnswer[] = questions.map((_) => ({ answer: "", isValid: false }));
+    set((state) => ({ quizz: { ...state.quizz, questions, questionsCount: questions.length, results } }));
   },
   resetQuizz: () => set({ quizz: { questions: [], questionsCount: 0, results: [], score: 0 } }),
-  updateResults: (index: number, answer: string) => {
+  updateResults: ({ index, answer }) => {
     const { quizz } = get();
     const question = quizz.questions[index];
     const isValid = question.correct_answer === answer;
