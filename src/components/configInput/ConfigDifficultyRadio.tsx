@@ -3,7 +3,7 @@ import { API_DIFFICULTIES } from "../../api";
 import { useDifficulty, useSetConfig } from "../../controllers";
 import { TriviaDifficulty } from "../../types";
 
-export const QuestionDifficultyRadio = () => {
+export const ConfigDifficultyRadio = () => {
   const difficulty = useDifficulty();
   const setConfig = useSetConfig();
   return (

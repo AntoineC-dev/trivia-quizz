@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import { ColorModeSwitcher } from "../colorModeSwitcher/ColorModeSwitcher";
+import { ColorModeSwitcher } from "./ColorModeSwitcher";
 
 export const Layout = () => {
   return (

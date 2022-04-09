@@ -2,7 +2,7 @@ import { Button, HStack, Input, useNumberInput } from "@chakra-ui/react";
 import { useAmount, useSetConfig } from "../../controllers";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
-export const QuestionAmountInput = () => {
+export const ConfigAmountInput = () => {
   const amount = useAmount();
   const setConfig = useSetConfig();
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({

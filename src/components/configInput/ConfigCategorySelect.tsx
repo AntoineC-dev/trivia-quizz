@@ -2,7 +2,7 @@ import { Select } from "@chakra-ui/react";
 import { API_CATEGORIES } from "../../api";
 import { useCategory, useSetConfig } from "../../controllers";
 
-export const QuestionCategorySelect = () => {
+export const ConfigCategorySelect = () => {
   const category = useCategory();
   const setConfig = useSetConfig();
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) =>

@@ -1,10 +1,14 @@
+import * as React from "react";
 import { Button, ButtonProps } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { NavigateOptions, useNavigate } from "react-router-dom";
 
-type RouterButtonProps = { to: string } & ButtonProps;
+type RouterButtonProps = {
+  to: string;
+  navigateOptions?: NavigateOptions;
+} & Omit<ButtonProps, "onClick">;
 
-export const RouterButton = ({ to, ...rest }: RouterButtonProps) => {
+export const RouterButton = ({ to, navigateOptions, ...rest }: RouterButtonProps) => {
   const navigate = useNavigate();
-  const onClick = () => navigate(to);
-  return <Button onClick={onClick} {...rest} />;
+  const onNavigate = () => navigate(to, navigateOptions);
+  return <Button onClick={onNavigate} {...rest} />;
 };
