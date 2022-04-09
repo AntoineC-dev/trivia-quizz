@@ -1,59 +1,38 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+# Trivia Quizz App
 
-## Available Scripts
+Welcome everyone! I am Antoine CHEMINAT from Martinique FWI.
 
-In the project directory, you can run:
+This project is a 100% Open Source Quizz App w/ React & Open Trivia Database API.[^1]
 
-### `yarn start`
+[^1]: Feel free to share any suggestion to improve the code.
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
+## What is the purpose of this app?
 
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+Test your knowledge & have some fun for free.
 
-### `yarn test`
+More than 4000 questions organized in 20+ categories.
 
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+> This project displays the following skills:
 
-### `yarn build`
+- 100% type-safe code
+- Usage of an API
+- Global state managment.
 
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
+### Librairies & Packages
 
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
+- Create-React-App
+- Typescript
+- ChakraUi (component library)
+- Axios (Api queries)
+- React Router V6 (Router)
+- Zustand (State managment)
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+### What is Open Trivia DB?
 
-### `yarn eject`
+Free to use, user-contributed trivia question database.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The Open Trivia Database provides a completely free JSON API for use in programming projects.
 
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+Use of this API does not require a API Key, just generate the URL below use it in your own application to retrieve trivia questions.
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Open Trivia DB website](https://opentdb.com/)
