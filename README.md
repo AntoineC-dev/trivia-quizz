@@ -29,10 +29,10 @@ More than 4000 questions organized in 20+ categories.
 
 ### What is Open Trivia DB?
 
-Free to use, user-contributed trivia question database.
+> Free to use, user-contributed trivia question database.
+
+[Open Trivia DB website](https://opentdb.com/)
 
 The Open Trivia Database provides a completely free JSON API for use in programming projects.
 
-Use of this API does not require a API Key, just generate the URL below use it in your own application to retrieve trivia questions.
-
-[Open Trivia DB website](https://opentdb.com/)
+Use of this API does not require a API Key.
