@@ -1,9 +1,8 @@
-import * as React from "react";
 import { Button, ButtonProps } from "@chakra-ui/react";
-import { NavigateOptions, useNavigate } from "react-router-dom";
+import { NavigateOptions, To, useNavigate } from "react-router-dom";
 
 type RouterButtonProps = {
-  to: string;
+  to: To;
   navigateOptions?: NavigateOptions;
 } & Omit<ButtonProps, "onClick">;
 
