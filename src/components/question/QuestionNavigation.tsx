@@ -11,7 +11,8 @@ export const QuestionNavigation = ({ index }: { index: number }) => {
     if (quizzStatus !== "completed") return "gray";
     return results[i].isValid ? "green" : "red";
   };
-  const buttonVariant = (i: number) => (results[i].answer.length === 0 ? "ghost" : "solid");
+  const buttonVariant = (i: number) =>
+    results[i].answer.length === 0 && quizzStatus !== "completed" ? "ghost" : "solid";
 
   return (
     <Wrap justify="center">
