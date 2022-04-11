@@ -19,7 +19,7 @@ export const Home = () => {
     if (quizzStatus !== "initial") resetQuizz();
   }, [quizzStatus, resetQuizz]);
   return (
-    <VStack spacing={8} w="100%" maxW="lg" justifySelf="center">
+    <VStack spacing={8} w="100%" maxW="lg" placeSelf="center">
       <VStack spacing={4}>
         <Heading as="h1" size="3xl">
           Trivia Quizz

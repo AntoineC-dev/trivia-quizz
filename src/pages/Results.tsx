@@ -13,7 +13,7 @@ export const Results = () => {
     setQuizzStatus("completed");
   }, [setQuizzStatus]);
   return (
-    <VStack spacing={8} w="100%" maxW="lg" justifySelf="center">
+    <VStack spacing={8} w="100%" maxW="lg" placeSelf="center">
       <VStack spacing={4}>
         <Heading as="h1" size="3xl">
           Results
@@ -30,7 +30,7 @@ export const Results = () => {
           Restart
         </RouterButton>
         <RouterButton to={ROUTES.question(0)} rightIcon={<CheckCircleIcon />}>
-          Show correct answers
+          Show details
         </RouterButton>
       </ButtonGroup>
     </VStack>

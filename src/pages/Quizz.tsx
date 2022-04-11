@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Heading, Spinner, Text, VStack } from "@chakra-ui/react";
 import { useQuestionsCount } from "../controllers";
 import { Outlet } from "react-router-dom";
@@ -6,7 +5,7 @@ import { Outlet } from "react-router-dom";
 export const Quizz = () => {
   const questionsCount = useQuestionsCount();
   return (
-    <VStack spacing={8} w="100%" maxW="lg" justifySelf="center">
+    <VStack w="100%" maxW="lg" placeSelf="center">
       {questionsCount === 0 ? (
         <VStack spacing={8} w="100%">
           <Heading as="span">Good luck, have fun!</Heading>
