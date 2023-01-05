@@ -4,6 +4,8 @@ Welcome everyone! I am Antoine CHEMINAT from Martinique FWI.
 
 This project is a 100% Open Source Quizz App w/ React & Open Trivia Database API.[^1]
 
+Live URL: [https://trivia-quizz.vercel.app/](https://trivia-quizz.vercel.app/)
+
 [^1]: Feel free to share any suggestion to improve the code.
 
 ## What is the purpose of this app?
